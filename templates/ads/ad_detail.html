@@ -1,0 +1,24 @@
+<!-- templates/ads/ad_detail.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ ad.id }}の詳細</title>
+</head>
+<body>
+    <h1>{{ ad.id }}の詳細</h1>
+    <p>広告主: {{ ad.advertiser.name }}</p>
+    <p>URL: <a href="{{ ad.url }}">{{ ad.url }}</a></p>
+    <p>QRコード: <img src="{{ ad.qr_code.url }}" alt="QRコード"></p>
+    <p>ロゴ: <img src="{{ ad.advertiser.logo.url }}" alt="企業ロゴ"></p> <!-- ロゴ表示 -->
+    
+    <h2>利用者情報の入力</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">このクーポンコードを利用する</button>
+    </form>
+    
+    <a href="{% url 'user_form' %}?ad_id={{ ad.id }}">この広告を利用する</a>
+</body>
+</html>

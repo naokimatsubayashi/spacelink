@@ -1,0 +1,19 @@
+<!-- templates/ads/ad_detail.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ ad.id }}の詳細</title>
+</head>
+<body>
+    <h1>{{ ad.id }}の詳細</h1>
+    <p>広告主: {{ ad.advertiser.name }}</p>
+    <p>広告スペース提供者: {{ ad.ad_space_provider.name }}</p>
+    <p>URL: <a href="{{ ad.url }}">{{ ad.url }}</a></p>
+    <p>QRコード: <img src="{{ ad.qr_code.url }}" alt="QRコード"></p>
+    {% if ad.advertiser.logo_url %}
+        <p><img src="{{ ad.advertiser.logo_url }}" alt="広告主のロゴ"></p>
+    {% endif %}
+    <a href="{% url 'user_form' %}?ad_id={{ ad.id }}">この広告を利用する</a>
+</body>
+</html>

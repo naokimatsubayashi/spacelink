@@ -1,0 +1,18 @@
+<!-- templates/ads/ad_list.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>広告リスト</title>
+</head>
+<body>
+    <h1>広告リスト</h1>
+    <ul>
+        {% for ad in ads %}
+            <li>
+                <a href="{% url 'ad_detail' ad.id %}">{{ ad.advertiser.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
